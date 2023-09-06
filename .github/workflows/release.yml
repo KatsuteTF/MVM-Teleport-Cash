@@ -1,14 +1,13 @@
-name: SourcePawn CI
+name: Release
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize]
+  release:
+    types: [published]
 
 jobs:
-  ci:
-    name: SourcePawn CI
-    uses: KatsuteTF/Workflows/.github/workflows/ci.yml@main
+  release:
+    name: Release Plugin
+    uses: KatsuteTF/Workflows/.github/workflows/release.yml@main
     with:
       file: Cash.sp
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
